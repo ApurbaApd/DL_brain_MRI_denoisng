@@ -1,0 +1,16 @@
+data/
+results/
+
+train_images-2/
+test_images-2/
+test_images/
+
+saved_models/
+*.pth
+*.png
+src/Dataset
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints
+.DS_Store
