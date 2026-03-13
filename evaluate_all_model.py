@@ -28,7 +28,7 @@ def evaluate_all():
                   if f.lower().endswith(('.png', '.jpg', '.jpeg', '.tif', '.bmp'))]
 
     test_dataset = MedicalDenoisingValidationDataset(test_files, test_path)
-    loader = DataLoader(test_dataset, batch_size=30, shuffle=True)
+    loader = DataLoader(test_dataset, batch_size=1, shuffle=True)
 
     noisy, clean = next(iter(loader))
     noisy, clean = noisy.to(device), clean.to(device)

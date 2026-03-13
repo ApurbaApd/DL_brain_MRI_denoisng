@@ -43,7 +43,7 @@ class MedicalDenoisingDataset(Dataset):
 
 
 class MedicalDenoisingValidationDataset(Dataset):
-    def __init__(self, file_list, root_dir, noise_factor=0.04, img_size=128):
+    def __init__(self, file_list, root_dir, noise_factor=0.1, img_size=128):
 
         self.root_dir = root_dir
         self.noise_factor = noise_factor
