@@ -167,7 +167,7 @@ def train(args):
             else:
                 early_stop_counter += 1
 
-            # ---- Early Stopping ----
+            # Early Stopping
             if early_stop_counter >= args.patience:
                 print("Early stopping triggered.")
                 break
@@ -178,10 +178,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_path", type=str, required=True)
-    parser.add_argument("--model", type=str,
-                        required=True,
-                        choices=['cae', 'unet', 'vae', 'resnet'])
-
+    parser.add_argument("--model", type=str,required=True, choices=['cae', 'unet', 'vae', 'resnet'])
     parser.add_argument("--epochs", type=int, default=30)
     parser.add_argument("--batch_size", type=int, default=32)
     parser.add_argument("--lr", type=float, default=1e-3)

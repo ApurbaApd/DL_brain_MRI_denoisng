@@ -30,7 +30,7 @@ class MedicalDenoisingDataset(Dataset):
             # Random sigma between 0.05 and 0.1
             sigma = torch.empty(1).uniform_(0.01, 0.1).item()
 
-            # Add Gaussian noise
+            # Gaussian noise
             noise = torch.randn_like(clean) * sigma
             noisy = torch.clamp(clean + noise, 0., 1.)
 
@@ -43,7 +43,7 @@ class MedicalDenoisingDataset(Dataset):
 
 
 class MedicalDenoisingValidationDataset(Dataset):
-    def __init__(self, file_list, root_dir, noise_factor=0.1, img_size=128):
+    def __init__(self, file_list, root_dir, noise_factor=0.01, img_size=128):
 
         self.root_dir = root_dir
         self.noise_factor = noise_factor
