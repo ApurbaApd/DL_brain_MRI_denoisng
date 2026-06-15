@@ -18,16 +18,14 @@ def evaluate_model():
 
     test_path = "test_images-2"
 
-    test_files = [f for f in os.listdir(test_path)
-                  if f.lower().endswith(('.png', '.jpg', '.jpeg', '.tif', '.bmp'))]
+    test_files = [f for f in os.listdir(test_path) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.tif', '.bmp'))]
 
     test_dataset = MedicalDenoisingDataset(test_files, test_path)
     test_loader = DataLoader(test_dataset, batch_size=8, shuffle=False)
 
     # model = ResNetAE().to(device)
     model = CAE().to(device)
-    model.load_state_dict(torch.load("best_model_cae_fold5.pth",
-                                     map_location=device))
+    model.load_state_dict(torch.load("best_model_cae_fold5.pth", map_location=device))
     model.eval()
 
     total_psnr = 0

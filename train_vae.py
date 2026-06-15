@@ -37,7 +37,7 @@ def train(args):
     else:
         device = torch.device('cpu')
 
-    print(f"\n--- Training {args.model.upper()} on {device} ---")
+    print(f"\nTraining {args.model.upper()} on {device}")
 
     files = [f for f in os.listdir(args.data_path) if f.endswith(".png")]
     data = pd.DataFrame({"filename": files})
@@ -48,7 +48,7 @@ def train(args):
     # cross validation
     for fold, (tr_idx, val_idx) in enumerate(gkf.split(data, groups=data["patient_id"])):
 
-        print(f"\n======Fold {fold + 1} ==========")
+        print(f"\n Fold {fold + 1}")
 
         train_files = data.iloc[tr_idx]["filename"].values
         val_files = data.iloc[val_idx]["filename"].values
@@ -153,7 +153,7 @@ def train(args):
                 f"LR: {optimizer.param_groups[0]['lr']:.6f}"
             )
 
-            # ---- Save Best Model ----
+            # Best Model
             if val_loss < best_val_loss:
                 best_val_loss = val_loss
                 early_stop_counter = 0
@@ -163,7 +163,7 @@ def train(args):
                     f"best_model_{args.model}_fold{fold+1}.pth"
                 )
 
-                print("   --> Saved Best Model")
+                print("Saved Best Model")
             else:
                 early_stop_counter += 1
 

@@ -37,7 +37,7 @@ def train(args):
     else:
         device = torch.device('cpu')
 
-    print(f"--- Training {args.model.upper()} on {device} ---")
+    print(f"Training {args.model.upper()} on {device}")
 
     files = [f for f in os.listdir(args.data_path) if f.endswith(".png")]
 
@@ -53,7 +53,7 @@ def train(args):
 
     for fold, (tr_idx, val_idx) in enumerate(gkf.split(data, groups=data["patient_id"])):
 
-        print(f"\n====Fold {fold+1}: =====")
+        print(f"\n Fold {fold+1}:")
 
         train_files = data.iloc[tr_idx]["filename"].values
         val_files = data.iloc[val_idx]["filename"].values
